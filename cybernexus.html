@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CyberNexus — Auditoria, Patching e Compliance</title>
+  <meta name="description" content="CyberNexus: auditoria de sistemas, gestão de patches e consultoria em compliance para PME." />
+
+  <style>
+    :root{
+      --bg:#0b1220;
+      --bg-light:#0f172a;
+      --primary:#1e90ff;         /* azul tecnológico */
+      --accent:#22d3ee;          /* ciano futurista */
+      --text:#e6eef7;
+      --muted:#a8b3c7;
+      --card:#0d1931;
+      --border:#1f2b46;
+      --success:#34d399;
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial,sans-serif}
+    a{color:var(--accent);text-decoration:none}
+    img{max-width:100%;height:auto;display:block}
+    .container{max-width:1120px;margin:0 auto;padding:0 24px}
+
+    /* Header */
+    header{
+      position:sticky;top:0;z-index:50;
+      background:linear-gradient(0deg, rgba(11,18,32,0.7), rgba(11,18,32,0.95));
+      backdrop-filter:saturate(120%) blur(6px);
+      border-bottom:1px solid var(--border);
+    }
+    .nav{
+      display:flex;align-items:center;justify-content:space-between;
+      padding:14px 0;
+    }
+    .brand{display:flex;align-items:center;gap:14px}
+    .brand img{width:42px;height:42px}
+    .brand .name{font-weight:700;letter-spacing:0.6px}
+    .brand .tag{font-size:12px;color:var(--muted)}
+    .menu{display:flex;gap:18px}
+    .menu a{padding:8px 12px;border-radius:8px;color:var(--text)}
+    .menu a:hover{background:rgba(34,211,238,0.12)}
+    .cta{
+      background:linear-gradient(90deg, var(--accent), var(--primary));
+      color:#001; font-weight:700; padding:10px 14px; border-radius:10px;
+    }
+
+    /* Hero */
+    .hero{
+      position:relative;overflow:hidden;
+      background:
+        radial-gradient(1200px 600px at 80% -10%, rgba(34,211,238,0.12), transparent 60%),
+        radial-gradient(800px 400px at 10% 20%, rgba(30,144,255,0.15), transparent 60%),
+        linear-gradient(180deg, var(--bg-light), var(--bg));
+      border-bottom:1px solid var(--border);
+    }
+    .hero-inner{display:grid;grid-template-columns:1.1fr 0.9fr;gap:36px;padding:64px 0}
+    .headline{font-size:44px;line-height:1.1;margin:0 0 14px}
+    .sub{color:var(--muted);font-size:18px;margin:0 0 24px}
+    .pill{display:inline-flex;gap:8px;align-items:center;color:#001;background:rgba(34,211,238,0.25);border:1px solid rgba(34,211,238,0.5);border-radius:999px;padding:6px 10px;margin-bottom:14px}
+    .hero-cards{display:grid;gap:16px}
+    .card{
+      background:linear-gradient(180deg, rgba(13,25,49,0.8), rgba(13,25,49,1));
+      border:1px solid var(--border); border-radius:14px; padding:18px;
+    }
+    .card h3{margin:0 0 6px;font-size:18px}
+    .card p{margin:0;color:var(--muted);font-size:14px}
+
+    /* Sections */
+    section{padding:56px 0;border-bottom:1px solid var(--border)}
+    .sec-title{font-size:28px;margin:0 0 10px}
+    .sec-sub{color:var(--muted);margin:0 0 26px}
+    .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .feature{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:18px}
+    .feature h4{margin:0 0 8px}
+    .feature p{margin:0;color:var(--muted)}
+
+    /* Pricing */
+    .pricing{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .plan{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:20px}
+    .plan h3{margin:0 0 6px}
+    .price{font-size:26px;font-weight:800;margin:4px 0 12px;background:linear-gradient(90deg,var(--accent),var(--primary));-webkit-background-clip:text;background-clip:text;color:transparent}
+    .plan ul{list-style:none;padding:0;margin:0}
+    .plan li{margin:8px 0;color:var(--muted)}
+    .badge{display:inline-block;background:rgba(52,211,153,0.18);border:1px solid rgba(52,211,153,0.6);color:var(--success);padding:4px 8px;border-radius:999px;font-size:12px;margin-left:6px}
+
+    /* Footer */
+    footer{padding:34px 0;color:var(--muted)}
+    .foot{display:flex;flex-wrap:wrap;gap:18px;align-items:center;justify-content:space-between}
+    .foot small{display:block}
+
+    /* Responsive */
+    @media (max-width:960px){
+      .hero-inner{grid-template-columns:1fr}
+      .grid3, .pricing{grid-template-columns:1fr}
+      .menu{display:none}
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="container nav">
+      <div class="brand">
+        <!-- Substitua o src pelo nome do ficheiro do seu logotipo -->
+        <img src="logo.png" alt="Logotipo CyberNexus" />
+        <div>
+          <div class="name">CYBERNEXUS</div>
+          <div class="tag">Auditoria • Patching • Compliance</div>
+        </div>
+      </div>
+      <nav class="menu" aria-label="Menu principal">
+        <a href="#servicos">Serviços</a>
+        <a href="#sobre">Sobre nós</a>
+        <a href="#precos">Planos</a>
+        <a class="cta" href="#contactos">Agendar auditoria</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container hero-inner">
+      <div>
+        <div class="pill">
+          <span>•</span>
+          <span>Proteção inteligente para PME</span>
+        </div>
+        <h1 class="headline">Unimos segurança, auditoria e compliance.</h1>
+        <p class="sub">Somos o ponto que conecta: proteção, consultoria em conformidade (GDPR, NIS2), auditoria de sistemas, gestão automatizada de patches e inovação digital.</p>
+        <p class="sub">CyberNexus ponto central de confiança.</p>
+        <div class="hero-cards">
+          <div class="card">
+            <h3>Auditoria de sistemas</h3>
+            <p>Deteção de vulnerabilidades e relatório claro de prioridades.</p>
+          </div>
+          <div class="card">
+            <h3>Gestão de patches</h3>
+            <p>Atualizações contínuas e automatizadas para reduzir riscos.</p>
+          </div>
+          <div class="card">
+            <h3>Compliance</h3>
+            <p>Alinhamento com normas e regulamentos, sem complicações.</p>
+          </div>
+        </div>
+      </div>
+      <div>
+        <img src="CEO.png" alt="Rede digital protegida por escudo" style="border-radius:16px;border:1px solid var(--border)" />
+      </div>
+    </div>
+  </section>
+
+  <!-- Serviços -->
+  <section id="servicos">
+    <div class="container">
+      <h2 class="sec-title">Serviços</h2>
+      <p class="sec-sub">Soluções pensadas para PME: eficazes, escaláveis e orientadas a resultados.</p>
+      <div class="grid3">
+        <div class="feature">
+          <h4>Auditoria essencial</h4>
+          <p>Mapeamento de ativos, análise de riscos e recomendações de mitigação.</p>
+        </div>
+        <div class="feature">
+          <h4>Patching automatizado</h4>
+          <p>Correções contínuas em sistemas e aplicações críticas, com reporting.</p>
+        </div>
+        <div class="feature">
+          <h4>Consultoria em compliance</h4>
+          <p>GDPR, NIS2 e boas práticas — políticas, processos e evidências.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sobre nós -->
+  <section id="sobre">
+    <div class="container">
+      <h2 class="sec-title">Sobre a CyberNexus</h2>
+      <p class="sec-sub">Nascemos para simplificar a segurança digital e dar às PME a confiança que precisam para crescer.</p>
+      <div class="grid3">
+        <div class="feature">
+          <h4>Foco em resultados</h4>
+          <p>Indicadores mensais e relatórios que falam a linguagem do negócio.</p>
+        </div>
+        <div class="feature">
+          <h4>Tecnologia cloud</h4>
+          <p>Gestão remota, automatizada e escalável de endpoints.</p>
+        </div>
+        <div class="feature">
+          <h4>Proximidade</h4>
+          <p>Suporte humano, formação básica e planos adaptados ao contexto de cada cliente.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Planos -->
+  <section id="precos">
+    <div class="container">
+      <h2 class="sec-title">Planos e preços</h2>
+      <p class="sec-sub">Três níveis para diferentes necessidades. Todos incluem suporte remoto.</p>
+      <div class="pricing">
+        <div class="plan">
+          <h3>Básico</h3>
+          <div class="price">20 € / mês</div>
+          <ul>
+            <li>Auditoria inicial</li>
+            <li>Patching crítico</li>
+            <li>Relatório simples</li>
+          </ul>
+        </div>
+        <div class="plan">
+          <h3>Profissional<span class="badge">Mais escolhido</span></h3>
+          <div class="price">50 € / mês</div>
+          <ul>
+            <li>Auditoria completa</li>
+            <li>Patching contínuo</li>
+            <li>Relatórios mensais</li>
+            <li>Alertas de incidentes</li>
+          </ul>
+        </div>
+        <div class="plan">
+          <h3>Premium</h3>
+          <div class="price">100 € / mês</div>
+          <ul>
+            <li>Compliance (GDPR, NIS2)</li>
+            <li>Consultoria estratégica</li>
+            <li>Formação básica</li>
+            <li>SLA prioritário</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contactos -->
+  <section id="contactos">
+    <div class="container">
+      <h2 class="sec-title">Contacte-nos</h2>
+      <p class="sec-sub">Proteja o futuro da sua empresa com a CyberNexus.</p>
+      <div class="grid3">
+        <div class="feature">
+          <h4>Email</h4>
+          <p>contacto@cybernexus.pt</p>
+        </div>
+        <div class="feature">
+          <h4>Telefone</h4>
+          <p>+351 919 657 073</p>
+        </div>
+        <div class="feature">
+          <h4>Agendar auditoria</h4>
+          <p><a class="cta" href="#">Solicitar proposta</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container foot">
+      <div class="brand">
+        <img src="logo.png" alt="Logotipo CyberNexus" />
+        <div>
+          <div class="name">CYBERNEXUS</div>
+          <small>© 2025 CyberNexus. Todos os direitos reservados.</small>
+        </div>
+      </div>
+      <small>Privacidade • Termos • Segurança</small>
+    </div>
+  </footer>
+
+</body>
+</html>
